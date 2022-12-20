@@ -43,13 +43,13 @@ double fecha_a_segundos(char* anio, char* mes, char* dia) {
   // Convertir el objeto tm a un objeto time_t
   time_t t = mktime(&fecha);
 
-  // Obtener el n˙mero de segundos transcurridos desde la madrugada del 1 de enero de 1970
+  // Obtener el n√∫mero de segundos transcurridos desde la madrugada del 1 de enero de 1970
   return t;
 }
 
 int main()
 {
-    // Establece el n˙mero de hilos a usar
+    // Establece el n√∫mero de hilos a usar
     ifstream Archivo;
 
     Archivo.open("datos_examen.csv");
@@ -64,7 +64,7 @@ int main()
     float sumXX = 0;
     float sec;
 
-    getline(Archivo,linea);// salta la primera lÌnea
+    getline(Archivo,linea);// salta la primera l√≠nea
     //Como dijo maradona, no es lo mismo una clase en linea, que una linea en clase.
     omp_set_num_threads(4); //establece el numero de hilos en 4
 
@@ -111,7 +111,7 @@ int main()
     float y = promx - pendiente * promeFecha;
     float sumatoriaYCuadrado = sumY;
 
-    double resultErEs = sqrt((sumatoriaYCuadrado- (y*sumA)-(pendiente*sumxY))/(aux-2));
+    
 
     string input; //input corresponde a los datos ingresados por el usuario
     while (true){ //Este ciclo es para ingresar la fecha y validarla, si se ingresa una fecha con el mes 13 por ejemplo, pedira una nueva fecha
@@ -124,7 +124,7 @@ int main()
       continue;
     }
 
-    // Verifica si los componentes de la fecha son n˙meros v·lidos
+    // Verifica si los componentes de la fecha son n√∫meros v√°lidos
     int year, month, day;
     if (!(istringstream(input.substr(0, 4)) >> year) ||
         !(istringstream(input.substr(5, 2)) >> month) ||
@@ -146,10 +146,10 @@ int main()
     time_t t = mktime(&date);
 
     if (t != -1) {
-      // La fecha es v·lida
+      // La fecha es v√°lida
       break;
     }else {
-      // La fecha es inv·lida
+      // La fecha es inv√°lida
       cout << "Por favor, ingrese una fecha valida" << endl;
         //Aqui termina la validacion
     }
@@ -158,7 +158,7 @@ int main()
     char* year_str = strtok(date_str, "-");
     char* month_str = strtok(NULL, "-");
     char* day_str = strtok(NULL, "-");
-    //Convertimos los componentes a n˙meros y asignamos a la estructura tm
+    //Convertimos los componentes a n√∫meros y asignamos a la estructura tm
     tm t;
     t.tm_year = atoi(year_str) - 1900;
     t.tm_mon = atoi(month_str) - 1;
@@ -167,7 +167,7 @@ int main()
         // Convertimos la estructura tm a un valor de tiempo en segundos
     time_t seg = mktime(&t);
     float prediccion = y + (pendiente * sec);
-    //cout << t.tm_year << endl; Mensaje de prueba
+    
     cout << "La prediccion de accidentes para la fecha " << input << " es: " << prediccion << endl;
 
     return 0;
