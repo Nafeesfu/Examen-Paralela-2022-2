@@ -65,7 +65,7 @@ int main()
     float sec;
 
     getline(Archivo,linea);// salta la primera línea
-    //Como dijo maradona, no es lo mismo una clase en linea, que una linea en clase.
+   
     omp_set_num_threads(4); //establece el numero de hilos en 4
 
     #pragma omp parallel //for reduction (+:sumA,sumxY,sumXX,sumY)
